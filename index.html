@@ -138,6 +138,9 @@
 <body>
     <h1>Feliz Cumple Ambi!!</h1>
 
+      <!-- Botón para reproducir música -->
+      <button onclick="playAudio()">Reproducir Música</button>
+
     <!-- Imagen pequeña de fondo -->
     <img src="https://i.postimg.cc/DfqJML0y/Flork-com-bolo-de-anivers-rio-figurinha-whatsapp-azul-png-Art-Poin-removebg-preview.png" class="background-image" alt="Imagen pequeña de fondo">
 
@@ -153,6 +156,14 @@
         <source src="audio/cumple-ambi.mp3" type="audio/mp3">
         Tu navegador no soporta el elemento de audio.
     </audio>
+
+    <script>
+        // Función para reproducir el audio
+        function playAudio() {
+            var audio = document.getElementById("mi-audio");
+            audio.play(); // Reproduce la canción cuando se hace clic en el botón
+        }
+    </script>
 
     <script>
         // Función para crear corazones cayendo desde la parte superior
