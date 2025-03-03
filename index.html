@@ -54,7 +54,7 @@
             color: #ff1493;
             text-shadow: 0 0 10px #ff69b4;
             position: absolute;
-            top: 50%;
+            top: 30%; /* Cambiado a 30% para que esté más arriba */
             animation: parpadeo 1.5s infinite;
         }
 
@@ -88,6 +88,21 @@
         .fotocard.center { left: 50%; top: 65%; transform: translateX(-50%) rotate(0deg); }
         .fotocard.right1 { right: 5%; top: 40%; transform: rotate(15deg); }
         .fotocard.right2 { right: 15%; top: 60%; transform: rotate(10deg); }
+
+        /* Corazones que caen */
+        .heart {
+            position: absolute;
+            top: -50px;
+            font-size: 30px;
+            color: #ff1493;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
 
         /* Responsividad */
         @media (max-width: 768px) {
@@ -136,6 +151,21 @@
         const felicitacion = document.getElementById("felicitacion");
         const backgroundMusic = document.getElementById("backgroundMusic");
 
+        // Función para crear corazones
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw"; // Posición horizontal aleatoria
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s"; // Duración aleatoria
+            document.body.appendChild(heart);
+
+            // Eliminar el corazón después de que termine la animación
+            setTimeout(() => {
+                heart.remove();
+            }, 5000); // 5 segundos
+        }
+
         // Al tocar la pantalla
         document.addEventListener("click", () => {
             // Ocultar el mensaje "Toca la pantalla"
@@ -146,6 +176,9 @@
 
             // Reproducir la canción
             backgroundMusic.play();
+
+            // Crear corazones cada 300ms
+            setInterval(createHeart, 300);
         });
     </script>
 </body>
