@@ -81,6 +81,7 @@
             position: absolute;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            display: none; /* Ocultas inicialmente */
         }
 
         .fotocard.left1 { left: 5%; top: 40%; transform: rotate(-15deg); }
@@ -126,7 +127,7 @@
     <!-- Imagen pequeña de fondo -->
     <img src="https://i.postimg.cc/DfqJML0y/Flork-com-bolo-de-anivers-rio-figurinha-whatsapp-azul-png-Art-Poin-removebg-preview.png" class="background-image" alt="Imagen pequeña de fondo">
 
-    <!-- Fotocards -->
+    <!-- Fotocards (ocultas inicialmente) -->
     <img src="https://i.pinimg.com/736x/ae/c8/f5/aec8f5c732154200baa4fd9a4baba0a6.jpg" class="fotocard left1" alt="Fotocard 1">
     <img src="https://i.pinimg.com/736x/70/ae/d9/70aed94a61c5dfddc5e84c598916b8bf.jpg" class="fotocard left2" alt="Fotocard 2">
     <img src="https://i.pinimg.com/736x/8c/2b/a8/8c2ba8668ae1b88a1f2fef290d13541c.jpg" class="fotocard center" alt="Fotocard 3">
@@ -144,6 +145,7 @@
         const touchMessage = document.getElementById("touchMessage");
         const felicitacion = document.getElementById("felicitacion");
         const backgroundMusic = document.getElementById("backgroundMusic");
+        const fotocards = document.querySelectorAll(".fotocard");
 
         // Variables para controlar los corazones
         let hearts = [];
@@ -195,6 +197,11 @@
 
             // Mostrar el mensaje de felicitaciones
             felicitacion.style.display = "block";
+
+            // Mostrar las fotocards
+            fotocards.forEach(card => {
+                card.style.display = "block";
+            });
 
             // Reproducir la canción
             backgroundMusic.play();
