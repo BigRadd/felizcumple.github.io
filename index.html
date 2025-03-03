@@ -95,13 +95,7 @@
             top: -50px;
             font-size: 30px;
             color: #ff1493;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh);
-            }
+            will-change: transform; /* Optimización para animaciones */
         }
 
         /* Responsividad */
@@ -151,19 +145,47 @@
         const felicitacion = document.getElementById("felicitacion");
         const backgroundMusic = document.getElementById("backgroundMusic");
 
+        // Variables para controlar los corazones
+        let hearts = [];
+        const maxHearts = 30; // Máximo de corazones en pantalla
+
         // Función para crear corazones
         function createHeart() {
+            if (hearts.length >= maxHearts) return; // No crear más corazones si ya hay muchos
+
             const heart = document.createElement("div");
             heart.classList.add("heart");
             heart.innerHTML = "❤️";
             heart.style.left = Math.random() * 100 + "vw"; // Posición horizontal aleatoria
-            heart.style.animationDuration = Math.random() * 2 + 3 + "s"; // Duración aleatoria
             document.body.appendChild(heart);
 
-            // Eliminar el corazón después de que termine la animación
-            setTimeout(() => {
-                heart.remove();
-            }, 5000); // 5 segundos
+            // Agregar el corazón a la lista
+            hearts.push(heart);
+
+            // Animación del corazón
+            animateHeart(heart);
+        }
+
+        // Función para animar los corazones
+        function animateHeart(heart) {
+            const startTime = Date.now();
+            const duration = 3000; // Duración de la animación en ms
+
+            function update() {
+                const elapsed = Date.now() - startTime;
+                const progress = elapsed / duration;
+
+                if (progress < 1) {
+                    heart.style.transform = `translateY(${progress * 100}vh)`;
+                    requestAnimationFrame(update);
+                } else {
+                    // Eliminar el corazón cuando termine la animación
+                    heart.remove();
+                    hearts = hearts.filter(h => h !== heart);
+                }
+            }
+
+            requestAnimationFrame(update);
         }
 
         // Al tocar la pantalla
@@ -177,8 +199,8 @@
             // Reproducir la canción
             backgroundMusic.play();
 
-            // Crear corazones cada 300ms
-            setInterval(createHeart, 300);
+            // Crear corazones cada 500ms
+            setInterval(createHeart, 500);
         });
     </script>
 </body>
