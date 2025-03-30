@@ -24,10 +24,10 @@ body {
 /* Mensaje de cumpleaños con efectos especiales */
 .birthday-message {
   position: fixed;
-  top: 80%;
+  top: 2%;
   left: 50%;
   transform: translateX(-50%);
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 3vw, 3.5rem);
   font-weight: 800;
   color: var(--pink-color);
   text-shadow: 
@@ -258,20 +258,6 @@ body {
   top: 70%; right: 75%;
   animation-duration: 30s, 0.5s;
   animation-delay: 3s, 0.2s;
-}
-
-.butterfly:nth-child(3) {
-  width: 35px; height: 35px;
-  top: 25%; left: 85%;
-  animation-duration: 28s, 0.35s;
-  animation-delay: 5s, 0.1s;
-}
-
-.butterfly:nth-child(4) {
-  width: 50px; height: 50px;
-  top: 50%; right: 85%;
-  animation-duration: 32s, 0.45s;
-  animation-delay: 7s, 0.3s;
 }
 
 .concert-container {
