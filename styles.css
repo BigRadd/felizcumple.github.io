@@ -24,7 +24,7 @@ body {
 /* Mensaje de cumpleaños con efectos especiales */
 .birthday-message {
   position: fixed;
-  top: 5%;
+  top: 15%;
   left: 50%;
   transform: translateX(-50%);
   font-size: clamp(2rem, 3vw, 3.5rem);
